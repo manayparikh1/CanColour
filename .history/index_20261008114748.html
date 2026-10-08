@@ -21,7 +21,7 @@ font: 16px Arial, sans-serif;">
             ctx.moveTo(e.offsetX, e.offsetY);
             ctx.beginPath();
         };
-        c.onpointermove = function (e) {
+        c.pointermove = function (e) {
             if (!drawing) return;
             setStrokeStyle(col.value);
             ctx.lineWidth = size.value;

@@ -1,4 +1,4 @@
-<body style="margin:0w; 
+<body style="margin:9; 
 font: 16px Arial, sans-serif;">
     <div style="padding:6px;background: #ddd4d4">
         <input type=color id=col valeu="#000000">
@@ -15,7 +15,6 @@ font: 16px Arial, sans-serif;">
         c.height = innerHeight - 40;
         ctx.lineCap = 'round';
         let drawing = false;
-        let erasing = false;
 
         c.onpointerdown = function (e) { //basically controls the users mouse movements (and the code below)
             drawing = true;
@@ -26,7 +25,6 @@ font: 16px Arial, sans-serif;">
             if (!drawing) return;
             ctx.setStrokeStyle(col.value);
             ctx.lineWidth = size.value;
-            ctx.globalCompositeOperation = erasing ? 'destination-out' : 'source-over';
             ctx.lineTo(e.offsetX, e.offsetY);
             ctx.stroke();
         };
@@ -38,6 +36,7 @@ font: 16px Arial, sans-serif;">
 
         col.oninput = function () { hex.value = col.value; };
 
+        let erasing = false;
         eraser.onclick = function () {
             erasing = !erasing;
             eraser.textContent = erasing ? "Drawing" : "Eraser";
